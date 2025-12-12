@@ -1,0 +1,4 @@
+CONTROLLER (logica e fluxo do sistema)
+Decisões
+Intermediação entre VIEW e MODEL
+Lógica do sistema

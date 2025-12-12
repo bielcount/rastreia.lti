@@ -1,0 +1,8 @@
+VIEW (interface visivel)
+Aqui fica tudo que escreve no console:
+
+Tela de login
+Tela de menu
+Mensagens
+
+Leituras com Scanner
