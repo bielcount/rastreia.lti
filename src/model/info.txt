@@ -1,0 +1,7 @@
+MODEL (dados)
+Só classes que representam entidades e suas regras básicas:
+Usuario
+Motorista
+Carga
+
+(Não colocamos Scanner, prints, nem lógica de menu.)
