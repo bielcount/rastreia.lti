@@ -5,7 +5,25 @@ import java.util.Scanner;
 public class MenuView {
     private Scanner input = new Scanner(System.in);
 
-    public int menuPrincipal(int tipoUsuario) {
+    public int menuPrincipalAdmin() {
+        System.out.println("\n========== MENU PRINCIPAL ==========");
+        System.out.println("------------------------------------");
+        System.out.println("1 - Gerenciar cargas");
+        System.out.println("2 - Gerenciar motoristas");
+        System.out.println("3 - Gerenciar tipos de carga");
+        System.out.println("4 - Gerar relatórios");
+        System.out.println("5 - Gerenciar usuários");
+
+        System.out.println("0 - Sair");
+        System.out.print("Escolha: ");
+
+        try {
+            return Integer.parseInt(input.nextLine());
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    public int menuPrincipalCliente(){
         System.out.println("\n========== MENU PRINCIPAL ==========");
         System.out.println("------------------------------------");
         System.out.println("1 - Listar cargas");

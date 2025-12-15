@@ -11,7 +11,7 @@ public class LoginController {
 
         // Usuários do sistema
         Usuario admin = new Usuario("klabunde.lti", "iffar2025", 1);
-        Usuario cliente = new Usuario("buntech.tli", "buntech2025", 0);
+        Usuario cliente = new Usuario("buntech.lti", "buntech2025", 0);
 
         while (true) {
             String usuario = view.pedirUsuario();

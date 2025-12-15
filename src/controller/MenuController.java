@@ -9,8 +9,11 @@ public class MenuController {
 
         int opcao = -1;
 
-        while (opcao != 0) {
-            opcao = view.menuPrincipal(tipoUsuario);
+        if( tipoUsuario == 1){
+            opcao = view.menuPrincipalAdmin();
+            
+            while (opcao != 0) {
+            opcao = view.menuPrincipalCliente();
 
             switch (opcao) {
                 case 1:
@@ -25,5 +28,25 @@ public class MenuController {
                     view.invalido();
             }
         }
+    
+        }else{
+            while (opcao != 0) {
+            opcao = view.menuPrincipalCliente();
+
+            switch (opcao) {
+                case 1:
+                    view.listarCargasSimuladas();
+                    break;
+
+                case 0:
+                    view.sair();
+                    break;
+
+                default:
+                    view.invalido();
+            }
+        }
+        }
+    
     }
 }
