@@ -46,12 +46,12 @@ public class subMenuController {
         int opcao = -1;
 
         while (opcao != 0) {
-            opcao = view.menuCargas();
+            opcao = view.menuMotoristas();
 
             switch (opcao) {
                 case 1:
                     Limpar.terminal();
-                    view.listarCargasSimuladas();
+                    view.listarMotoristasSimulados();
                     break;
 
                 case 2:
@@ -74,12 +74,12 @@ public class subMenuController {
         int opcao = -1;
 
         while (opcao != 0) {
-            opcao = view.menuCargas();
+            opcao = view.menuTipoCarretas();
 
             switch (opcao) {
                 case 1:
                     Limpar.terminal();
-                    view.listarCargasSimuladas();
+                    view.listarTiposCarretas();
                     break;
 
                 case 2:
@@ -97,4 +97,34 @@ public class subMenuController {
             }
         }
     }
+
+    public  void submenuCarreta() {
+        
+        int opcao = -1;
+
+        while (opcao != 0) {
+            opcao = view.menuCarretas();
+
+            switch (opcao) {
+                case 1:
+                    Limpar.terminal();
+                    view.listarCarretas();
+                    break;
+
+                case 2:
+                case 3:
+                case 4:
+                    view.emConstrucao();
+                    break;
+
+                case 0:
+                    Limpar.terminal();
+                    break;
+
+                default:
+                    view.invalido();
+            }
+        }
+    }
+
 }

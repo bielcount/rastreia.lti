@@ -107,7 +107,30 @@ public class MenuView {
         System.out.println("-----------------------------------------------");
 
         aguardarVoltar();
+    }   
+    public void listarTiposCarretas() {
+        System.out.println("\n========== LISTA DE TIPOS DE CARRETA ==========");
+        System.out.println("ID   | TIPO                                 | CAPACIDADE MAX  | QUANT. DE PLACAS  |");
+        System.out.println("-----------------------------------------------");
+        System.out.println("001  | Carreta LS                        | 1300     | 1");
+        System.out.println("002  | Carreta Graneleiro 4 eixo         | 2000     | 1");
+        System.out.println("003  | Carreta sider                     | 3200     | 1");
+        System.out.println("-----------------------------------------------");
+
+        aguardarVoltar();
+    }
+    public void listarCarretas() {
+        System.out.println("\n========== LISTA DE CARRETAS ==========");
+        System.out.println("ID   | PLACA 1     | TIPO           | STATUS");
+        System.out.println("-----------------------------------------------");
+        System.out.println("001  | NAW-3193    | Carreta LS     | Em trânsito");
+        System.out.println("002  | HZB-7038    | Carreta LS     | Ocioso");
+        System.out.println("003  | JVE-1877    | Carreta LS     | Aguardando coleta");
+        System.out.println("-----------------------------------------------");
+
+        aguardarVoltar();
     }    
+    
 
     /* =========================
        UTILITÁRIOS DE VIEW

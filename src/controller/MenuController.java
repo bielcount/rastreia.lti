@@ -36,8 +36,17 @@ public class MenuController {
                     break;
 
                 case 2:
+                    Limpar.terminal();
+                    submenu.submenuMotoristas();
+                    break;
                 case 3:
+                    Limpar.terminal();
+                    submenu.submenuCarreta();
+                    break;
                 case 4:
+                    Limpar.terminal();
+                    submenu.submenuTipoCarreta();
+                    break;
                 case 5:
                     view.emConstrucao();
                     break;
