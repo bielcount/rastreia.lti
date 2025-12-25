@@ -1,5 +1,6 @@
 package controller;
 
+import repository.CargaRepository;
 import util.Limpar;
 import view.MenuView;
 public class MenuController {
@@ -72,7 +73,7 @@ public class MenuController {
 
             switch (opcao) {
                 case 1:
-                    view.listarCargasSimuladas();
+                    view.listarCargasSimuladas(CargaRepository.listar());
                     break;
 
                 case 0:

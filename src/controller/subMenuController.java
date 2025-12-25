@@ -1,17 +1,18 @@
 package controller;
 
+import repository.CargaRepository;
 import util.Limpar;
 import view.MenuView;
-
 public class subMenuController {
     
      private  MenuView view;
-     
+     private CargasController CargaController;
      public subMenuController(MenuView view) {
         this.view = view;
+        this.CargaController  = new CargasController(view);
     }
 
-     public  void submenuCargas() {
+     public void submenuCargas() {
         
         int opcao = -1;
 
@@ -21,10 +22,13 @@ public class subMenuController {
             switch (opcao) {
                 case 1:
                     Limpar.terminal();
-                    view.listarCargasSimuladas();
+                    view.listarCargasSimuladas(CargaRepository.listar());
                     break;
 
                 case 2:
+                    Limpar.terminal();
+                    CargaController.cadastrar();
+                    break;
                 case 3:
                 case 4:
                     view.emConstrucao();
@@ -41,7 +45,7 @@ public class subMenuController {
     }
 
 
-    public  void submenuMotoristas() {
+    public void submenuMotoristas() {
         
         int opcao = -1;
 
@@ -69,7 +73,7 @@ public class subMenuController {
             }
         }
     }
-    public  void submenuTipoCarreta() {
+    public void submenuTipoCarreta() {
         
         int opcao = -1;
 
@@ -98,7 +102,7 @@ public class subMenuController {
         }
     }
 
-    public  void submenuCarreta() {
+    public void submenuCarreta() {
         
         int opcao = -1;
 
@@ -109,6 +113,33 @@ public class subMenuController {
                 case 1:
                     Limpar.terminal();
                     view.listarCarretas();
+                    break;
+
+                case 2:
+                case 3:
+                case 4:
+                    view.emConstrucao();
+                    break;
+
+                case 0:
+                    Limpar.terminal();
+                    break;
+
+                default:
+                    view.invalido();
+            }
+        }
+    }
+    public void submenuCaminhao(){
+        int opcao = -1;
+
+        while (opcao != 0) {
+            opcao = view.menuCaminhao();
+
+            switch (opcao) {
+                case 1:
+                    Limpar.terminal();
+                    view.listarCaminhoes();
                     break;
 
                 case 2:

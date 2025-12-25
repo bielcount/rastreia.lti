@@ -1,6 +1,9 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
+
+import model.Carga;
 import util.Limpar;
 
 public class MenuView {
@@ -45,21 +48,6 @@ public class MenuView {
         return lerOpcao();
     }
 
-    /* =========================
-       LISTAGENS
-       ========================= */
-    public void listarCargasSimuladas() {
-        System.out.println("\n========== LISTA DE CARGAS ==========");
-        System.out.println("ID   | ORIGEM        | DESTINO           | STATUS");
-        System.out.println("-----------------------------------------------");
-        System.out.println("001  | Santa Maria   | Porto Alegre      | Em trânsito");
-        System.out.println("002  | São Paulo     | Rio de Janeiro    | Entregue");
-        System.out.println("003  | Curitiba      | Florianópolis    | Aguardando coleta");
-        System.out.println("-----------------------------------------------");
-
-        aguardarVoltar();
-    }
-
     public int menuMotoristas() {
         System.out.println("\n========== MENU MOTORISTAS ==========");
         System.out.println("1 - listar motoristas");
@@ -95,8 +83,49 @@ public class MenuView {
 
         return lerOpcao();
     }
-
+    public int menuCaminhao(){
         
+        System.out.println("\n========== MENU CAMINHÕES ==========");
+        System.out.println("1 - listar caminhões");
+        System.out.println("2 - Cadastrar caminhão");
+        System.out.println("3 - Alterar cadastro de caminhão");
+        System.out.println("4 - Excluir caminhão");
+        System.out.println("0 - Voltar");
+        System.out.print("Escolha: ");
+        
+        
+        return lerOpcao();
+    }
+
+    
+    /* =========================
+       LISTAGENS
+       ========================= */
+    public void listarCargasSimuladas(List<Carga> cargas) {
+        System.out.println("\n========== LISTA DE CARGAS ==========");
+
+    if (cargas.isEmpty()) {
+        System.out.println("Nenhuma carga cadastrada.");
+        aguardarVoltar();
+        return;
+    }
+
+    System.out.println(" INVOICE | CAMINHÃO | CARRET. 1 | CARRET. 2 | NOTA FISCAL");
+    System.out.println("----------------------------------------------------------");
+    for (Carga c : cargas) {
+        System.out.printf(
+            "%8d | %-8s | %-8s | %8s | %8s%n",
+            c.getInvoice(),
+            c.getPlacaCaminhao(),
+            c.getPlacaCarga1(),
+            c.getPlacaCarga2(),
+            c.getNotaFiscal()
+        );
+    }
+
+        aguardarVoltar();
+    } 
+    
     public void listarMotoristasSimulados() {
         System.out.println("\n========== LISTA DE MOTORISTAS ==========");
         System.out.println("ID   | NOME            | CPF             | STATUS");
@@ -130,12 +159,52 @@ public class MenuView {
 
         aguardarVoltar();
     }    
+    public void listarCaminhoes(){
+        System.out.println("\n========== LISTA DE CAMINHÕES ==========");
+        System.out.println("ID   | PLACA 1     | TIPO           | STATUS");
+        System.out.println("-----------------------------------------------");
+        System.out.println("001  | NAW-3193    | Carreta LS     | Em trânsito");
+        System.out.println("002  | HZB-7038    | Carreta LS     | Ocioso");
+        System.out.println("003  | JVE-1877    | Carreta LS     | Aguardando coleta");
+        System.out.println("-----------------------------------------------");
+
+        aguardarVoltar();
+    }
+    
+    public Carga formularioCadastroCarga() {
+    System.out.println("========== CADASTRO DE CARGA ==========");
+
+    try {
+        System.out.print("Invoice (número): ");
+        int invoice = Integer.parseInt(input.nextLine());
+
+        System.out.print("Placa do caminhão: ");
+        String placaCaminhao = input.nextLine();
+
+        System.out.print("Placa 1 da carga: ");
+        String placaCarga1 = input.nextLine();
+
+        System.out.print("Placa 2 da carga: ");
+        String placaCarga2 = input.nextLine();
+
+        System.out.print("Nota fiscal: ");
+        String notaFiscal = input.nextLine();
+
+        return new Carga(invoice, placaCaminhao, placaCarga1, placaCarga2, notaFiscal);
+
+    } catch (Exception e) {
+        System.out.println("Erro no preenchimento dos dados.");
+        aguardarVoltar();
+        return null;
+    }
+}
+
     
 
     /* =========================
        UTILITÁRIOS DE VIEW
        ========================= */
-    private void aguardarVoltar() {
+    public void aguardarVoltar() {
         System.out.println("\n0 - Voltar");
         System.out.print("Escolha: ");
 
