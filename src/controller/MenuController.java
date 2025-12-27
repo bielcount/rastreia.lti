@@ -1,7 +1,9 @@
 package controller;
 
+import repository.CargaRepository;
 import util.Limpar;
 import view.MenuView;
+
 public class MenuController {
 
     private MenuView view;
@@ -20,9 +22,11 @@ public class MenuController {
         }
     }
 
-    /* =========================
-       MENU ADMIN
-       ========================= */
+    /*
+     * =========================
+     * MENU ADMIN
+     * =========================
+     */
     private void menuAdmin() {
         int opcao = -1;
 
@@ -48,6 +52,11 @@ public class MenuController {
                     submenu.submenuTipoCarreta();
                     break;
                 case 5:
+                    Limpar.terminal();
+                    submenu.submenuCaminhao();
+                    break;
+                case 6:
+                    Limpar.terminal();
                     view.emConstrucao();
                     break;
 
@@ -61,9 +70,11 @@ public class MenuController {
         }
     }
 
-    /* =========================
-       MENU CLIENTE
-       ========================= */
+    /*
+     * =========================
+     * MENU CLIENTE
+     * =========================
+     */
     private void menuCliente() {
         int opcao = -1;
 
@@ -72,7 +83,7 @@ public class MenuController {
 
             switch (opcao) {
                 case 1:
-                    view.listarCargasSimuladas();
+                    view.listarCargas(CargaRepository.listar());
                     break;
 
                 case 0:
