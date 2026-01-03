@@ -3,6 +3,7 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 import model.*;
+import repository.MotoristaRepository;
 import repository.TipoCarretaRepository;
 import util.Limpar;
 
@@ -113,11 +114,11 @@ public class MenuView {
             return;
         }
 
-        System.out.printf("%-4s | %-8s | %-10s | %-10s | %-10s | %-12s%n", "INVOICE", "CAMINHÃO", "CARRET. 1", "CARRET. 2", "NOTA FISCAL");
+        System.out.printf("%-4s | %-8s | %-10s | %-10s | %-10s | %-10s%n", "ID", "INVOICE", "CAMINHÃO", "CARRET. 1", "CARRET. 2", "NOTA FISCAL");
         System.out.println("-".repeat(71));
         for (Carga c : cargas) {
             System.out.printf(
-                    "%-4d |%-8d | %-10s | %-10s | %-10s | %-12s%n",
+                    "%-4d |%-8d | %-10s | %-10s | %-10s | %-10s%n",
                     c.getId(),
                     c.getInvoice(),
                     c.getPlacaCaminhao(),
@@ -359,6 +360,67 @@ public class MenuView {
             return null;
         }
     }
+
+    /*
+    ==========================================================================================
+    VIEW DE DELETAR
+    ==========================================================================================
+    */
+
+    public String formularioExcluirMotorista(){
+
+        List<Motorista> motoristas = MotoristaRepository.listar();
+        System.out.println("\n========== LISTA DE MOTORISTAS ==========");
+
+        System.out.printf("%-4s | %-15s | %-15s | %-15s%n", "ID", "NOME", "CPF", "STATUS");
+        System.out.println("-".repeat(58));
+        for (Motorista m : motoristas) {
+            System.out.printf(
+                    "%-4d | %-15s | %-15s | %-15s%n",
+                    m.getId(),
+                    m.getNome(),
+                    m.getCpf(),
+                    m.getStatus());
+        }
+        
+        System.out.println("Digite o cpf do motorista a ser excluido: ");
+        String cpf = input.nextLine();
+
+        if (cpf.isBlank()) {
+            System.out.println("CPF não pode ser vazio.");
+            aguardarVoltar();
+            return null;
+        }
+
+        return cpf;
+    
+    }
+
+    public int formularioExcluirTipoCarreta(){
+
+        List<TipoCarreta> tipoCarretas = TipoCarretaRepository.listar();
+
+        System.out.println("\n========== LISTA DE TIPO DE CARRETAS ==========");
+        System.out.printf("%-4s | %-15s | %s | %-15s%n","ID", "TIPO","CAPACIDADE","Quantidade de Placas");
+        System.out.println("-".repeat(53));
+        for (TipoCarreta tc : tipoCarretas) {
+            System.out.printf(
+                    "%-4d | %-15s | %-10s | %-15s%n",
+                    tc.getId(),
+                    tc.getTipo(),
+                    tc.getCapacidade(),
+                    tc.getQtdPlacas());
+        }
+
+        
+        System.out.println("Digite o id do tipo da carreta a ser excluido: ");
+        int id = input.nextInt();
+        input.nextLine();
+
+        return id;
+    
+    }
+
 
     /*
      * =========================

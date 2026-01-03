@@ -16,6 +16,10 @@ public class TipoCarretaRepository {
         tipoCarreta.setId(id++);
         tipoCarretas.add(tipoCarreta);
     }
+    public static boolean excluir(int id){
+        return tipoCarretas.removeIf(c -> c.getId() == id);
+    }
+
 
     public static List<TipoCarreta> listar() {
         return tipoCarretas;
