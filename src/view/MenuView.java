@@ -455,7 +455,7 @@ public class MenuView {
 
     public void sair() {
         Limpar.terminal();
-        System.out.println("Encerrando o sistema...");
+        System.out.println("Saindo do sistema...");
     }
 
     public void invalido() {

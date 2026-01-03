@@ -22,6 +22,11 @@ public class LoginController {
 
         while (true) {
             String usuario = view.pedirUsuario();
+
+            if(usuario.equals("0")){
+                return -9;
+            }
+
             String senha = view.pedirSenha();
 
             if (usuario.equals(admin.getUsername()) && senha.equals(admin.getPassword())) {

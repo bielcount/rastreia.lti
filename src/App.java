@@ -1,15 +1,29 @@
-//package rastreia.lti;
-
 import controller.LoginController;
 import controller.MenuController;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         LoginController login = new LoginController();
-        int resultado = login.fazerLogin();
-
         MenuController menu = new MenuController();
-        menu.exibirMenu(resultado);
+
+        while (true) {
+            int resultado = login.fazerLogin();
+
+            // encerrar sistema
+            if (resultado == -9) {
+                System.out.println("Sistema encerrado.");
+                break;
+            }
+
+            // login inválido
+            if (resultado == -1) {
+                System.out.println("Login inválido. Tente novamente.\n");
+                continue;
+            }
+
+            // login válido → menu
+            menu.exibirMenu(resultado);
+        }
     }
 }

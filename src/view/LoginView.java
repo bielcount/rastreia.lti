@@ -8,8 +8,9 @@ public class LoginView {
     private Scanner input = new Scanner(System.in);
 
     public String pedirUsuario() {
-        System.out.print("Usuário: ");
+        System.out.print("Usuário (Digite 0 para encerrar): ");
         return input.nextLine();
+
     }
 
     public String pedirSenha() {

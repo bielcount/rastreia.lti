@@ -62,7 +62,7 @@ public class MenuController {
 
                 case 0:
                     view.sair();
-                    break;
+                    return;
 
                 default:
                     view.invalido();
@@ -88,7 +88,7 @@ public class MenuController {
 
                 case 0:
                     view.sair();
-                    break;
+                    return;
 
                 default:
                     view.invalido();
