@@ -299,11 +299,7 @@ public class MenuView {
     public Carreta formularioCadastroCarreta() {
         System.out.println("========== CADASTRO DE CARRETA ==========");
         try {
-            System.out.print("Placa 1: ");
-            String placa1 = input.nextLine();
-
-            System.out.print("Placa 2: ");
-            String placa2 = input.nextLine();
+            
 
             System.out.println("\nTipos de Carreta disponíveis:");
         List<TipoCarreta> tipos = TipoCarretaRepository.listar();
@@ -328,8 +324,42 @@ public class MenuView {
 
         TipoCarreta tipoSelecionado = tipos.get(opcao - 1);
 
+        System.out.print("Placa 1: ");
+        String placa1 = input.nextLine();
+
+        String placa2 = "";
+
+        if (tipoSelecionado.getQtdPlacas() == 2) {
+            System.out.print("Placa 2: ");
+            placa2 = input.nextLine();
+        }
+
+        String status = "";
+        int i = 0;
+        while (i == 0) {
         System.out.print("Status da Carreta: ");
-        String status = input.nextLine();
+        System.out.println("\n1 - Ocioso \n2 - Em Manutenção \n3 - Em Uso");
+        int statusInt = input.nextInt();
+        input.nextLine();
+            switch (statusInt) {
+                case 1:
+                    status = "Ocioso";
+                    i = 1;
+                    break;
+                case 2:
+                    status = "Em Manutenção";
+                    i = 1;
+                    break;
+                case 3:
+                    status = "Em Uso";
+                    i = 1;
+                    break;
+                default:
+                    System.out.println("\nOpção invalida.\n");
+
+                    break;
+            }
+        }
 
         return new Carreta(placa1, placa2, tipoSelecionado, status);
 
